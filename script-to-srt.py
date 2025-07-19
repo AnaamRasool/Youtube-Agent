@@ -1,8 +1,12 @@
 from flask import Flask, request, send_file, jsonify
 import io
 import re
+import logging
 
 app = Flask(__name__)
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
 
 WORDS_PER_SECOND = 4.0
 
@@ -35,27 +39,42 @@ def generate_srt(script, wps=WORDS_PER_SECOND):
 
 @app.route("/generate-srt", methods=["POST"])
 def generate_srt_file():
-    data = request.get_json()
-    if not data or "script" not in data or "filename" not in data:
-        return jsonify({"error": "Missing 'script' or 'filename'"}), 400
+    try:
+        data = request.get_json(force=True)
+        if not data or "script" not in data or "filename" not in data:
+            logging.warning("Missing 'script' or 'filename'")
+            return jsonify({"error": "Missing 'script' or 'filename'"}), 400
 
-    script = data["script"]
-    filename = data["filename"].strip()
-    if not filename.endswith(".srt"):
-        filename += ".srt"
+        script = data["script"]
+        filename = data["filename"].strip()
+        if not filename.endswith(".srt"):
+            filename += ".srt"
 
-    srt_content = generate_srt(script)
+        try:
+            srt_content = generate_srt(script)
+        except Exception as e:
+            logging.exception("Error generating SRT")
+            return jsonify({"error": "Failed to generate SRT", "details": str(e)}), 500
 
-    # Return the .srt file as binary stream
-    file_stream = io.BytesIO(srt_content.encode("utf-8"))
-    file_stream.seek(0)
+        # Convert to binary stream
+        try:
+            file_stream = io.BytesIO(srt_content.encode("utf-8"))
+        except UnicodeEncodeError as e:
+            logging.exception("Encoding error")
+            return jsonify({"error": "Encoding error", "details": str(e)}), 500
 
-    return send_file(
-        file_stream,
-        mimetype="application/x-subrip",
-        as_attachment=True,
-        download_name=filename
-    )
+        file_stream.seek(0)
+
+        return send_file(
+            file_stream,
+            mimetype="application/x-subrip",
+            as_attachment=True,
+            download_name=filename
+        )
+
+    except Exception as e:
+        logging.exception("Unhandled exception")
+        return jsonify({"error": "Unexpected error", "details": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)

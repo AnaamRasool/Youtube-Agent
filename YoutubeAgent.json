@@ -1,5 +1,5 @@
 {
-  "name": "YoutubeAgent",
+  "name": "My workflow 4",
   "nodes": [
     {
       "parameters": {
@@ -9,14 +9,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        320,
-        -360
+        -620,
+        900
       ],
-      "id": "fe0eb227-7a7c-4842-b191-2ab2cb250d5a",
+      "id": "14cb9098-4e63-4779-973a-f74f1e813f24",
       "name": "OpenRouter Chat Model",
       "credentials": {
         "openRouterApi": {
-          "id": "lmQsStnMAVBZiYSe",
+          "id": "UPlK7z7FUhzVjMHf",
           "name": "OpenRouter account"
         }
       }
@@ -28,12 +28,12 @@
           "destinationFieldName": "videos"
         }
       },
-      "id": "c57b9e9a-5992-4f48-a2ab-f068fdeecb33",
+      "id": "d9e2737c-cae0-4f66-9897-ba8d0232f223",
       "name": "Split Videos",
       "type": "n8n-nodes-base.itemLists",
       "position": [
-        1740,
-        -640
+        800,
+        620
       ],
       "typeVersion": 3.1
     },
@@ -48,12 +48,12 @@
           }
         }
       },
-      "id": "bc1753e0-3ca4-492f-959b-926322a9b560",
+      "id": "7a1eb4ec-b1c7-4a6a-82d8-7adc9302f071",
       "name": "Download Video",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1960,
-        -640
+        1020,
+        620
       ],
       "typeVersion": 4.2
     },
@@ -66,11 +66,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        940,
-        -360
+        0,
+        900
       ],
       "typeVersion": 1,
-      "id": "721617d0-0bd5-4d52-a8a8-f188ee24fe6d",
+      "id": "26794401-17d9-4982-8928-765f84177a4b",
       "name": "Sticky Note"
     },
     {
@@ -82,11 +82,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        940,
-        -1260
+        0,
+        0
       ],
       "typeVersion": 1,
-      "id": "ee461724-6a87-465a-bbb4-98b1228f2e1f",
+      "id": "b3b48bf9-38eb-41ea-9973-6b3f055f8959",
       "name": "Sticky Note1"
     },
     {
@@ -105,10 +105,10 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.2,
       "position": [
-        -220,
-        -580
+        -1160,
+        680
       ],
-      "id": "fa16edbc-d586-4d80-a85e-78e6ceabbd65",
+      "id": "306108a9-302a-4da6-9bd3-b8b126e27193",
       "name": "Write video idea",
       "webhookId": "0341d4ce-4b42-4389-9401-cf705ca0b0ed"
     },
@@ -119,10 +119,10 @@
       "type": "n8n-nodes-base.executeCommand",
       "typeVersion": 1,
       "position": [
-        0,
-        -580
+        -940,
+        680
       ],
-      "id": "8678003d-f270-4752-96a5-5d2d8aae042d",
+      "id": "25af97f6-1e0c-4c13-b0dd-898089bd6fe3",
       "name": "Create Folder"
     },
     {
@@ -140,10 +140,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.6,
       "position": [
-        240,
-        -580
+        -700,
+        680
       ],
-      "id": "5a44c441-db30-4a18-957f-d515a3d77670",
+      "id": "396bfd25-bac5-4408-8a3b-70eeb8ab5a65",
       "name": "Write Script"
     },
     {
@@ -154,10 +154,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.6,
       "position": [
-        1060,
-        -1100
+        120,
+        160
       ],
-      "id": "95c2dd4d-403a-424c-a2c1-3ebdabcd5847",
+      "id": "dd348c20-b6fd-4605-b122-027ea7dbcc76",
       "name": "Write image/video prompt"
     },
     {
@@ -169,7 +169,7 @@
           "parameters": [
             {
               "name": "key",
-              "value": "=AIzaSyCbDNGaAtoE_XZv3rGu-INoCeQvnzuoXBY"
+              "value": "=AIzaSyCrvTVR45jppNSsmW6xjVOvdRhNAKj_ik4"
             }
           ]
         },
@@ -181,25 +181,25 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1480,
-        -1100
+        540,
+        160
       ],
-      "id": "35a72d53-3ac6-4661-8c3f-f7d768a7b9e6",
+      "id": "0f1f9c9f-345d-41e2-a590-072d9ca7ec52",
       "name": "Create AI Image"
     },
     {
       "parameters": {
         "operation": "toBinary",
-        "sourceProperty": "candidates[0].content.parts[0].inlineData.data",
+        "sourceProperty": "base64Image",
         "options": {}
       },
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        1740,
-        -1100
+        920,
+        160
       ],
-      "id": "b1eb01d7-9706-4d38-86e7-220846123629",
+      "id": "5cad15e5-2319-433e-88dd-45e7d7532dbf",
       "name": "Get AI Image"
     },
     {
@@ -211,10 +211,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        1960,
-        -1100
+        1160,
+        160
       ],
-      "id": "f6d770d4-8949-4a9c-a60f-aaaff55239d8",
+      "id": "fc845075-019a-4084-8d8f-5b8f8671a73e",
       "name": "Save AI Image"
     },
     {
@@ -229,10 +229,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1480,
-        -860
+        540,
+        400
       ],
-      "id": "1b0f7ff4-34de-40f0-89b3-c3d456b2c0e4",
+      "id": "7df6c803-a353-461d-a07e-9074ad4c6a40",
       "name": "Creat AI Video"
     },
     {
@@ -243,10 +243,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1740,
-        -860
+        800,
+        400
       ],
-      "id": "c144efd5-48c8-4395-9932-d066648b9aa0",
+      "id": "78608a18-e370-47c6-b698-f0621bf0c6c1",
       "name": "Get AI Video"
     },
     {
@@ -256,10 +256,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1960,
-        -860
+        1020,
+        400
       ],
-      "id": "10cd0e5f-dc5d-4bb6-9f14-4fff82649530",
+      "id": "504ad5e9-6f72-4358-b255-d336a7ba0639",
       "name": "Get URL"
     },
     {
@@ -273,12 +273,12 @@
           }
         }
       },
-      "id": "f167c91e-920c-4fc3-93b3-3dee60c4fd4f",
+      "id": "c2209c88-ed74-43ea-947d-a13e754f62a0",
       "name": "Download AI Video",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        2220,
-        -860
+        1280,
+        400
       ],
       "typeVersion": 4.2
     },
@@ -291,10 +291,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        2440,
-        -860
+        1500,
+        400
       ],
-      "id": "4830b8bc-6e73-4a3d-b77c-1fcf02d276d2",
+      "id": "854515ed-7815-414d-ba36-3b69cdd98673",
       "name": "Save AI Video"
     },
     {
@@ -318,18 +318,18 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "DLeEuwTJ2SL2wxRiQY6J8dEKPteO0cvzeq3GfUlcDQTJMqtPikVt8woa"
+              "value": "B81miAyOBM98Jx6u40iF7tNG9It8RMHdd46QcTh9J5XjtN35DOE7NTNr"
             }
           ]
         },
         "options": {}
       },
-      "id": "3f9691ca-2fab-4178-b1e7-3778518022cd",
+      "id": "6981c6d6-87d4-407e-9a50-bcf9b625ac0c",
       "name": "Search Videos on Pexel",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1480,
-        -640
+        540,
+        620
       ],
       "typeVersion": 4.2
     },
@@ -342,10 +342,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        2220,
-        -640
+        1280,
+        620
       ],
-      "id": "7b35ec47-06f9-4971-8d10-295cbd64e6ad",
+      "id": "2f1b7d4d-758b-45bf-8a8a-698f409b202b",
       "name": "Save Video"
     },
     {
@@ -357,10 +357,10 @@
       "type": "n8n-nodes-base.convertToFile",
       "typeVersion": 1.1,
       "position": [
-        1120,
-        -220
+        180,
+        1040
       ],
-      "id": "0ffd9721-7b37-4167-b0b5-00e1e3fa10bd",
+      "id": "5c97c2bf-bc9e-417f-8898-dae34e3fb383",
       "name": "Create Script"
     },
     {
@@ -372,16 +372,16 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        1420,
-        -220
+        480,
+        1040
       ],
-      "id": "2ce5b17a-c472-4181-8358-d14b85cbff6b",
+      "id": "31ddd394-37fd-4e80-8945-0dc3e6228756",
       "name": "Save Script"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:5001/tts",
+        "url": "http://192.168.1.36:5001/tts",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -406,10 +406,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1120,
-        0
+        180,
+        1260
       ],
-      "id": "0717c2d6-3e56-4f2f-841a-62f7878f4bfd",
+      "id": "dacf176e-4e20-4cad-9ebe-8d53114f0566",
       "name": "Create speech"
     },
     {
@@ -421,16 +421,16 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        1420,
-        0
+        460,
+        1260
       ],
-      "id": "c7b136fb-7624-4d89-91f6-d2802fe0bc2d",
+      "id": "a0002378-dc66-414d-977a-1708b2b6f4cb",
       "name": "Save speech"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:8000/generate-srt",
+        "url": "http://192.168.1.36:8000/generate-srt",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -455,10 +455,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1120,
-        220
+        180,
+        1480
       ],
-      "id": "61760ff4-f70b-4360-a36b-02e53411b4a2",
+      "id": "840c6aa4-afbe-4565-821c-358a398c2548",
       "name": "Create Caption"
     },
     {
@@ -470,10 +470,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1,
       "position": [
-        1420,
-        220
+        480,
+        1480
       ],
-      "id": "00bc8d5b-231e-4f60-b0ee-7cb5492bca7b",
+      "id": "9de163fd-6efe-48c8-9179-28e75d4cab20",
       "name": "Save Caption"
     },
     {
@@ -484,17 +484,30 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        1160,
-        -880
+        220,
+        380
       ],
-      "id": "508d47c9-6ee8-493a-bd7d-5548730a10cb",
+      "id": "65b7b92b-7dd9-4ec6-9240-e0906f4cb9d8",
       "name": "OpenRouter Chat Model1",
       "credentials": {
         "openRouterApi": {
-          "id": "lmQsStnMAVBZiYSe",
+          "id": "UPlK7z7FUhzVjMHf",
           "name": "OpenRouter account"
         }
       }
+    },
+    {
+      "parameters": {
+        "jsCode": "const candidates = items[0].json.candidates || [];\n\nif (candidates.length === 0) {\n  throw new Error(\"No candidates found.\");\n}\n\nconst parts = candidates[0].content?.parts || [];\n\nconst inlinePart = parts.find(p => p.inlineData && p.inlineData.data);\n\nif (!inlinePart) {\n  throw new Error(\"No inlineData image found in parts.\");\n}\n\n// Pass the image data forward\nreturn [\n  {\n    json: {\n      base64Image: inlinePart.inlineData.data\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        160
+      ],
+      "id": "aa009a37-3fcb-4e47-8408-a84c38d22be6",
+      "name": "Code"
     }
   ],
   "pinData": {},
@@ -605,7 +618,7 @@
       "main": [
         [
           {
-            "node": "Get AI Image",
+            "node": "Code",
             "type": "main",
             "index": 0
           }
@@ -689,11 +702,6 @@
         ]
       ]
     },
-    "Save Script": {
-      "main": [
-        []
-      ]
-    },
     "Create speech": {
       "main": [
         [
@@ -726,21 +734,28 @@
           }
         ]
       ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Get AI Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
-    "executionOrder": "v1",
-    "callerPolicy": "workflowsFromSameOwner",
-    "saveDataErrorExecution": "none",
-    "saveDataSuccessExecution": "none",
-    "saveManualExecutions": false
+    "executionOrder": "v1"
   },
-  "versionId": "fa2da4c9-12b1-4e5e-bd86-c61f0b2ca108",
+  "versionId": "d02165fb-5b40-41b0-9a52-a99092e5cda6",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "dedc19d9bdfc7243f7ee13c48a4edef60ea52cfb037e9ca16e44a41bcd75a2d3"
+    "instanceId": "37441675e5d72b037b24a5dad1b33cfd3f08907d16e6955c367a891b2abba97b"
   },
-  "id": "P9uM5z2NtH8aJwIN",
+  "id": "g6mE2Mq3updENRR5",
   "tags": []
 }
